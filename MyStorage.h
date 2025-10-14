@@ -2,3 +2,7 @@
 #define MYSTORAGE_H
 
 #endif // MYSTORAGE_H
+
+class MyStorage {
+
+};
