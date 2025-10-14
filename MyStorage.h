@@ -3,6 +3,24 @@
 
 #endif // MYSTORAGE_H
 
-class MyStorage {
+#include "CCircle.h"
 
+class MyStorage {
+    CCircle *circle;
+    MyStorage *next;
+
+public:
+    MyStorage() : next(nullptr) {}
+
+    void add(CCircle *circ){
+        MyStorage*node = new MyStorage;
+        node->circle = circ;
+        if (!next){
+            next = node;
+            node->next = nullptr;
+            return;
+        }
+        node->next = next;
+        next = node;
+    }
 };
