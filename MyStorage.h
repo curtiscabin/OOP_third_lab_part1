@@ -23,4 +23,12 @@ public:
         node->next = next;
         next = node;
     }
+
+    CCircle *getObject(){
+        return next->circle;
+    }
+
+    // CCircle *next(){
+    //     return
+    // }
 };
