@@ -27,7 +27,7 @@ public:
     MyStorage() :head(nullptr),tail(nullptr) {}
 
     void add(CCircle *circ){
-        MyStorage*node = new Node;
+        Node*node = new Node;
         node->circle = circ;
         if (!head){
             head = node;
@@ -35,11 +35,17 @@ public:
             node->next = nullptr;
             return;
         }
-        node->next = next;
-        next = node;
+        node->next = head;
+        head = node;
     }
 
+    void first(){
+        current = head;
+    }
 
+    void next(){
+        // current = current;
+    }
 
     CCircle *getObject(){
         return current->circle;
