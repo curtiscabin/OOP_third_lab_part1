@@ -26,8 +26,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         CCircle.h
         MyStorage.h
-        MyStorage.cpp
-        CCircle.cpp
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET OOP_third_lab_part1 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
