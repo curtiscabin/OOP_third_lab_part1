@@ -5,18 +5,33 @@
 
 #include "CCircle.h"
 
-class MyStorage {
+class Node{
+
+    Node():next(nullptr),circle(nullptr){}
+
+    ~Node(){
+        delete next;
+        delete circle;
+    }
+
+    Node*next;
     CCircle *circle;
-    MyStorage *next;
+};
+
+class MyStorage {
+    MyStorage*head;
+    MyStorage*tail;
+    MyStorage*current;
 
 public:
-    MyStorage() : next(nullptr) {}
+    MyStorage() :head(nullptr),tail(nullptr) {}
 
     void add(CCircle *circ){
-        MyStorage*node = new MyStorage;
+        MyStorage*node = new Node;
         node->circle = circ;
-        if (!next){
-            next = node;
+        if (!head){
+            head = node;
+            tail = node;
             node->next = nullptr;
             return;
         }
@@ -24,8 +39,10 @@ public:
         next = node;
     }
 
+
+
     CCircle *getObject(){
-        return next->circle;
+        return current->circle;
     }
 
     // CCircle *next(){
