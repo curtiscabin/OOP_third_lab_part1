@@ -7,36 +7,46 @@
 
 class Node{
 
+    Node *next;
+    CCircle *circle;
+
     Node():next(nullptr),circle(nullptr){}
 
     ~Node(){
-        delete next;
         delete circle;
     }
 
-    Node*next;
-    CCircle *circle;
+
 };
 
 class MyStorage {
-    MyStorage*head;
-    MyStorage*tail;
-    MyStorage*current;
+    Node *head;
+    Node *tail;
+    Node *current;
 
 public:
-    MyStorage() :head(nullptr),tail(nullptr) {}
+    MyStorage() : head(nullptr),tail(nullptr),current(nullptr) {}
+
+    ~MyStorage(){
+        while (head){
+            current = head;
+            head = current->next;
+            delete current;
+
+        }
+        current = nullptr;
+        tail = nullptr;
+    }
 
     void add(CCircle *circ){
-        Node*node = new Node;
+
+        Node* node = new Node;
         node->circle = circ;
-        if (!head){
-            head = node;
-            tail = node;
-            node->next = nullptr;
-            return;
-        }
         node->next = head;
         head = node;
+        current = node;
+        if (!tail) tail = node;
+
     }
 
     void first(){
@@ -44,14 +54,15 @@ public:
     }
 
     void next(){
-        // current = current;
+        if (current) current = current->next ;
     }
+
+    bool eol(){
+        return current == nullptr;
+    }
+
 
     CCircle *getObject(){
-        return current->circle;
+        return current ? current->circle : nullptr;
     }
-
-    // CCircle *next(){
-    //     return
-    // }
 };
