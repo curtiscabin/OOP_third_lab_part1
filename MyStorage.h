@@ -16,6 +16,8 @@ class Node{
         delete circle;
     }
 
+    friend class MyStorage;
+
 
 };
 
@@ -64,5 +66,11 @@ public:
 
     CCircle *getObject(){
         return current ? current->circle : nullptr;
+    }
+
+    int get_size(){
+        int count =0;
+        for(this->first();!this->eol();this->next()) count++;
+        return count;
     }
 };

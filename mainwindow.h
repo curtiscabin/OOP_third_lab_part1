@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMouseEvent>
+#include <QList>
+#include "MyStorage.h"
+#include "CCircle.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +21,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+
+
+    void on_PaintAllCircle_clicked();
+
+protected:
+     void mousePressEvent(QMouseEvent *m_event) override;
+    MyStorage *store = new MyStorage;
+
 private:
     Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H
