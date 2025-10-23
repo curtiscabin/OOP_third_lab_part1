@@ -15,7 +15,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::mousePressEvent(QMouseEvent *m_event) {
     QPoint p = m_event->pos();
-    CCircle *c = new CCircle(p);
+    CCircle *c = new CCircle(p, this);
     store->add(c);
     ui->counter->setText(QString::number(store->get_size()));
 }
