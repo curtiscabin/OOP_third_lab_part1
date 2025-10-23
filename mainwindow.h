@@ -23,9 +23,6 @@ public:
 
 private slots:
 
-
-    void on_PaintAllCircle_clicked();
-
 protected:
      void mousePressEvent(QMouseEvent *m_event) override;
     MyStorage *store = new MyStorage;

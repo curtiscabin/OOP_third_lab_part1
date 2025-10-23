@@ -23,7 +23,7 @@
       <height>91</height>
      </rect>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>12</x>
@@ -33,36 +33,6 @@
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QPushButton" name="DeleteAllCircle">
-          <property name="font">
-           <font>
-            <family>Source Code Pro</family>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Удалить все круги</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="PaintAllCircle">
-          <property name="font">
-           <font>
-            <family>Source Code Pro</family>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Отрисовать круги</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
       <item>
        <widget class="QLabel" name="label_2">
         <property name="font">

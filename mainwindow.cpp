@@ -16,16 +16,11 @@ MainWindow::~MainWindow()
 void MainWindow::mousePressEvent(QMouseEvent *m_event) {
     QPoint p = m_event->pos();
     CCircle *c = new CCircle(p, this);
+    c->paint_circle();
     store->add(c);
     ui->counter->setText(QString::number(store->get_size()));
 }
 
 
 
-void MainWindow::on_PaintAllCircle_clicked()
-{
-    for(store->first();!store->eol();store->next()){
-        store->getObject()->paint_circle();
-    }
-}
 
