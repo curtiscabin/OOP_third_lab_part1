@@ -8,6 +8,7 @@
 #include <QWidget>
 #include<QPainter>
 #include<QDebug>
+#include <String>
 
 
 class CCircle : public QWidget {
@@ -17,9 +18,10 @@ class CCircle : public QWidget {
     int rad = 30;
 
 public:
-    CCircle(const QPoint &p, QWidget* parent = nullptr) : x(p.x()), y(p.y()), QWidget(parent){
+    CCircle(const QPoint &p, QWidget* parent/* = nullptr*/) : x(p.x()), y(p.y()), QWidget(parent){
         setFixedSize(2*rad, 2*rad);
         move(p.x() - rad, p.y() - rad);
+
     }
 
     void paint_circle(){
@@ -28,11 +30,14 @@ public:
         show();
     }
 
-protected:
     void paintEvent(QPaintEvent *) override {
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
         painter.drawEllipse(0,0,2*rad,2*rad);
 
     }
+
+    // bool isCordOfCircle(const QPoint &p){
+
+    // }
 };
