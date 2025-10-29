@@ -38,6 +38,7 @@ public:
 
     void paintEvent(QPaintEvent *) override {
         QPainter painter(this);
+        if (isSelect()) painter.setPen(QPen(Qt::cyan, 3));
         painter.setRenderHint(QPainter::Antialiasing);
         painter.drawEllipse(0,0,2*rad,2*rad);
 

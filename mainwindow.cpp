@@ -23,6 +23,7 @@ void MainWindow::mousePressEvent(QMouseEvent *m_event) {
             if (!store->getObject()->isSelect()){
                 select_circles->add(store->getObject());
                 store->getObject()->setSelection();
+                store->getObject()->update();
             }
         }
     }
