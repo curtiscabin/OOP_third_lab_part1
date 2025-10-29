@@ -20,9 +20,13 @@ void MainWindow::mousePressEvent(QMouseEvent *m_event) {
     for(store->first();!store->eol();store->next()){
         if (store->getObject()->isCordBelongCircle(p)){
             isSelect = true;
-            select_circles->add(store->getObject());
+            if (!store->getObject()->isSelect()){
+                select_circles->add(store->getObject());
+                store->getObject()->setSelection();
+            }
         }
     }
+    ui->counter_2->setText(QString::number(select_circles->get_size()));
 
     if (!isSelect){
         CCircle *c = new CCircle(p, this);
@@ -30,8 +34,17 @@ void MainWindow::mousePressEvent(QMouseEvent *m_event) {
         store->add(c);
         ui->counter->setText(QString::number(store->get_size()));
     }
-    else {
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+
+    int key=event->key();
+
+    if (key == Qt::Key_Delete){
+         qDebug()<<"key is Delete";
         store->deleteSelect(select_circles);
+        ui->counter_2->setText(QString::number(select_circles->get_size()));
+        ui->counter->setText(QString::number(store->get_size()));
     }
 }
 

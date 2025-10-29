@@ -11,17 +11,23 @@
 #include <String>
 
 
+
 class CCircle : public QWidget {
     Q_OBJECT
     int x;
     int y;
     int rad = 30;
+    bool isSelect_ = false;
 
 public:
-    CCircle(const QPoint &p, QWidget* parent/* = nullptr*/) : x(p.x()), y(p.y()), QWidget(parent){
+    CCircle(const QPoint &p, QWidget* parent) : x(p.x()), y(p.y()), QWidget(parent){
         setFixedSize(2*rad, 2*rad);
         move(p.x() - rad, p.y() - rad);
 
+    }
+
+    ~CCircle(){
+        update();
     }
 
     void paint_circle(){
@@ -37,7 +43,22 @@ public:
 
     }
 
-    // bool isCordOfCircle(const QPoint &p){
+    bool isCordBelongCircle(const QPoint &p){
+        int xp = p.x();
+        int yp = p.y();
 
-    // }
+        if ( (x - xp)*(x-xp) + (y - yp)*(y-yp) <= rad*rad ){
+            return true;
+        }
+        else return false;
+    }
+
+    void setSelection(){
+        isSelect_ = true;
+    }
+
+    bool isSelect(){
+        return isSelect_;
+    }
+
 };

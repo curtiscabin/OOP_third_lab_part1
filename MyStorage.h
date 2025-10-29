@@ -13,7 +13,7 @@ class Node{
     Node():next(nullptr),circle(nullptr){}
 
     ~Node(){
-        delete circle;
+        if (circle!=nullptr)delete circle;
     }
 
     friend class MyStorage;
@@ -73,4 +73,44 @@ public:
         for(this->first();!this->eol();this->next()) count++;
         return count;
     }
+
+    void deleteSelect(MyStorage *select) {
+
+        for (select->first();!select->eol();select->next()){
+            current = head;
+            if (head->circle == select->getObject()){
+                head->circle = nullptr;
+                Node *ptr = head;
+                head = head->next;
+                delete ptr;
+                continue;
+            }
+            else if (tail->circle == select->getObject()){
+                tail->circle = nullptr;
+                Node *ptr = tail;
+                while(current->next != tail){
+                    this->next();
+                }
+                tail = current;
+                tail->next = nullptr;
+                delete ptr;
+                continue;
+            }
+
+            while (current->next && current->next->circle != select->getObject()){
+                this->next();
+            }
+            if (!current->next) continue;
+            current->next->circle = nullptr;
+            Node *ptr = current->next;
+            current->next = current->next->next;
+            delete ptr;
+
+
+        }
+        select->~MyStorage();
+        select = new MyStorage;
+    }
+
+
 };

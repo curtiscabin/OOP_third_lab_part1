@@ -6,6 +6,7 @@
 #include <QList>
 #include "MyStorage.h"
 #include "CCircle.h"
+#include <QKeyEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,8 +25,10 @@ public:
 private slots:
 
 protected:
-     void mousePressEvent(QMouseEvent *m_event) override;
+    void mousePressEvent(QMouseEvent *m_event) override;
+    void keyPressEvent(QKeyEvent *event);
     MyStorage *store = new MyStorage;
+    MyStorage *select_circles = new MyStorage;
 
 private:
     Ui::MainWindow *ui;
