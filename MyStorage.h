@@ -29,7 +29,7 @@ class MyStorage {
 public:
     MyStorage() : head(nullptr),tail(nullptr),current(nullptr) {}
 
-    ~MyStorage(){
+    void clear(){
         while (head){
             current = head;
             head = current->next;
@@ -38,6 +38,10 @@ public:
         }
         current = nullptr;
         tail = nullptr;
+    }
+
+    ~MyStorage(){
+        this->clear();
     }
 
     void add(CCircle *circ){
@@ -104,13 +108,27 @@ public:
             current->next->circle = nullptr;
             Node *ptr = current->next;
             current->next = current->next->next;
+            if (ptr == tail) {
+                tail = current;
+            }
             delete ptr;
 
 
         }
-        select->~MyStorage();
-        select = new MyStorage;
+        select->clear();
     }
 
+    void clearSelectCircles(){
+        while (head){
+            current = head;
+            head = current->next;
+            current->circle->clearSelection();
+            current->circle->update();
+            current = nullptr;
+
+        }
+        current = nullptr;
+        tail = nullptr;
+    }
 
 };

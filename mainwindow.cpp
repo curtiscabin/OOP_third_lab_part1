@@ -16,6 +16,10 @@ MainWindow::~MainWindow()
 void MainWindow::mousePressEvent(QMouseEvent *m_event) {
     QPoint p = m_event->pos();
     bool isSelect = false;
+    if (!(m_event->modifiers() & Qt::ControlModifier)) {
+        qDebug() << "Ctrl не зажат";
+        select_circles->clearSelectCircles();
+    }
 
     for(store->first();!store->eol();store->next()){
         if (store->getObject()->isCordBelongCircle(p)){

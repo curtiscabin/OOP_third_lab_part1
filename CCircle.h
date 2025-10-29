@@ -21,7 +21,7 @@ class CCircle : public QWidget {
 
 public:
     CCircle(const QPoint &p, QWidget* parent) : x(p.x()), y(p.y()), QWidget(parent){
-        setFixedSize(2*rad, 2*rad);
+        setFixedSize(2.2*rad, 2.2*rad);
         move(p.x() - rad, p.y() - rad);
 
     }
@@ -56,6 +56,10 @@ public:
 
     void setSelection(){
         isSelect_ = true;
+    }
+
+    void clearSelection(){
+        isSelect_ = false;
     }
 
     bool isSelect(){
